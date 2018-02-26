@@ -9,4 +9,4 @@ La creación y configuración inicial del hotel, así como de sus tarifas e inve
 
 - Búsqueda de reservas por localizador
 - Búsqueda de reservas por rango de fechas
-- Notificación PUSH de reserva (creación, cancelación o modificación)
+- Notificación PUSH de reserva (creación, cancelación o modificación) 
