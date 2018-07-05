@@ -737,6 +737,7 @@ En el caso de que el hotel utilice varios, con el inventoryCode se podrá distin
         <span class="nt">&lt;user&gt;</span>BAR<span class="nt">&lt;/user&gt;</span>
         <span class="nt">&lt;password&gt;</span>FOOBAR<span class="nt">&lt;/password&gt;</span>
     <span class="nt">&lt;/credentials&gt;</span>   
+    <span class="nt">&lt;hotelCode&gt;</span>1234<span class="nt">&lt;/hotelCode&gt;</span>
     <span class="nt">&lt;reference&gt;</span>EPL10032017140800-SALE<span class="nt">&lt;/reference&gt;</span>
 <span class="nt">&lt;/BookingRetrievalRequest&gt;</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -747,6 +748,7 @@ En el caso de que el hotel utilice varios, con el inventoryCode se podrá distin
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOOBAR"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"hotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPL10032017140800-SALE"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1075,13 +1077,13 @@ o bien las reservas de un hotel creadas, canceladas o modificadas dentro de un r
 <tr>
 <td>dateFrom</td>
 <td><em>DateTime</em></td>
-<td>Sí</td>
+<td>No<sup>1</sup></td>
 <td>Fecha desde. Devolverá todas las reservas que se hayan creado, cancelado o modificado a partir de esta fecha (dd/MM/yyy HH:mm)</td>
 </tr>
 <tr>
 <td>dateTo</td>
 <td><em>DateTime</em></td>
-<td>Sí</td>
+<td>No<sup>1</sup></td>
 <td>Fecha hasta. Devolverá todas las reservas que se hayan creado, cancelado o modificado hasta esta fecha (dd/MM/yyy HH:mm)</td>
 </tr>
 <tr>
@@ -1093,7 +1095,7 @@ o bien las reservas de un hotel creadas, canceladas o modificadas dentro de un r
 </tbody></table>
 
 <aside class="notice">
-<sup>1</sup>&nbsp;&nbsp;&nbsp;Si no se informa localizador de la reserva (reference), es obligatorio informar el resto de parámetros (hotelCode, dateFrom, dateTo)
+<sup>1</sup>&nbsp;&nbsp;&nbsp;Si no se informa localizador de la reserva (reference), es obligatorio filtrar por fechas y/o estado de notificación (dateFrom/dateTo y/o notificationStatus)
 </aside>
 
 <aside class="notice">
