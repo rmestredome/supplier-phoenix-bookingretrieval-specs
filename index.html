@@ -1455,6 +1455,121 @@ o bien las reservas de un hotel creadas, canceladas o modificadas dentro de un r
 </ul>
 </aside>
 
+          <h2 id="extracustomdata">ExtraCustomData</h2>
+
+<blockquote>
+<p>Detalle del elemento ExtraCustomData del mensaje BookingRetrieval. </p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;BookingRetrievalResponse&gt;</span>
+    <span class="nt">&lt;sessionId&gt;</span>SUP#FOO#123456789<span class="nt">&lt;/sessionId&gt;</span>
+    <span class="nt">&lt;booking&gt;</span>
+       ...
+       <span class="nt">&lt;extraCustomData&gt;</span>
+          <span class="nt">&lt;customData&gt;</span>
+             <span class="nt">&lt;key&gt;</span>Key1<span class="nt">&lt;/key&gt;</span> 
+             <span class="nt">&lt;value&gt;</span>Value1<span class="nt">&lt;/value&gt;</span>
+           <span class="nt">&lt;/customData&gt;</span>
+           <span class="nt">&lt;customData&gt;</span>
+              <span class="nt">&lt;key&gt;</span>Key2<span class="nt">&lt;/key&gt;</span>
+              <span class="nt">&lt;value&gt;</span>Value2<span class="nt">&lt;/value&gt;</span>
+           <span class="nt">&lt;/customData&gt;</span>
+       <span class="nt">&lt;/extraCustomData&gt;</span>
+    <span class="nt">&lt;/booking&gt;</span>
+<span class="nt">&lt;/BookingRetrievalResponse&gt;</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"BookingRetrievalResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUP#FOO#123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"booking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">...</span><span class="w">   
+      </span><span class="s2">"extraCustomData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"customData"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value2"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Elemento <strong>Opcional</strong> utilizado para indicar diversos aspectos de la reserva que no tienen cabida en el formato básico de la reserva. </p>
+
+<p><strong>Solo se notificarán aquellos elementos que estén informados.</strong></p>
+
+<h3 id="customdata-keys">CustomData Keys</h3>
+
+<p>A continuación se detallan los distintos valores que pueden llegar en el elemento key.</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LastMinute</td>
+<td>S / N (Si/No)</td>
+<td>Indica si se trata de una reserva realizada a traves del componente LastMinute de la web</td>
+</tr>
+<tr>
+<td>SEMCODE</td>
+<td><em>String</em></td>
+<td>Indica el código de SEM</td>
+</tr>
+<tr>
+<td>BookingEngineCode</td>
+<td><em>Integer</em></td>
+<td>Indica el código de motor de la web</td>
+</tr>
+<tr>
+<td>WebsiteUrl</td>
+<td><em>String</em></td>
+<td>Indica la url de la web donde se ha realizado la reserva.</td>
+</tr>
+<tr>
+<td>IpAdress</td>
+<td><em>String</em></td>
+<td>Indica la ip desde la cual se ha realizado la reserva.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td><em>String</em></td>
+<td>Indica el pais desde el cual se ha realizado la reserva. (ISO 3166)</td>
+</tr>
+<tr>
+<td>ReferredByUrl</td>
+<td><em>String</em></td>
+<td>Indica la Url desde la cual ha llegado la reserva.</td>
+</tr>
+<tr>
+<td>ReferredBySystem</td>
+<td><em>String</em></td>
+<td>Indica el sistema desde el cual ha llegado la reserva. (GHF -Google Hotel Finder-, TVG -Trivago-).</td>
+</tr>
+<tr>
+<td>Affiliate</td>
+<td><em>String</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Medium</td>
+<td><em>String</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Source</td>
+<td><em>String</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
           <h1 id="notificaci-n-de-reservas-push">Notificación de reservas PUSH</h1>
 
 <p>Soporte para que el proveedor reciba una notificación PUSH cuando se crea una nueva reserva o bien se cancela o modifica
