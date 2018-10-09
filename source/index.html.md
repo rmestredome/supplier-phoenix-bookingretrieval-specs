@@ -17,6 +17,7 @@ includes:
   - authentication
   - hotel-configuration
   - booking-retrieval
+  - extraCustomData
   - booking-notification
 
 search: true
