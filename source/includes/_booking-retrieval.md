@@ -352,7 +352,7 @@ notificationStatus | *Enum* | No | Filtro por estado de notificación de reserva
 <sup>2</sup>&nbsp;&nbsp;&nbsp;Si no se informa, se devolverán todas las reservas sea cual sea su estado. Una reserva se marca como notificada cuando se entrega vía PUSH o bien se devuelve en alguna respuesta BookingRetrievalResponse.
 </aside>
 
-### RoomRatesRetrievalResponse
+### BookingRetrievalResponse
 
 Mensaje respuesta de recuperación de reservas
 
