@@ -893,6 +893,7 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual</p>
         <span class="nt">&lt;bookingPayment&gt;</span>
             <span class="nt">&lt;modality&gt;</span>Establishment<span class="nt">&lt;/modality&gt;</span>
             <span class="nt">&lt;type&gt;</span>WarrantyCard<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Tarjeta de garantía<span class="nt">&lt;/description&gt;</span>
             <span class="nt">&lt;status&gt;</span>Pending<span class="nt">&lt;/status&gt;</span>
         <span class="nt">&lt;/bookingPayment&gt;</span>
         <span class="nt">&lt;paymentCardDetail&gt;</span>
@@ -1029,6 +1030,7 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual</p>
       </span><span class="s2">"bookingPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"modality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Establishment"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WarrantyCard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarjeta de garantía"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pending"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"paymentCardDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1413,6 +1415,12 @@ o bien las reservas de un hotel creadas, canceladas o modificadas dentro de un r
 <td><em>Enum</em></td>
 <td>Sí</td>
 <td>Estado de pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳ description</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Contiene el nombre comercial asignado a a la modalidad de pago</td>
 </tr>
 <tr>
 <td>↳ paymentCardDetail</td>
