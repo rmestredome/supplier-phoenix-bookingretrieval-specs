@@ -176,6 +176,7 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual
         <bookingPayment>
             <modality>Establishment</modality>
             <type>WarrantyCard</type>
+			<description>Tarjeta de garantía</description>
             <status>Pending</status>
         </bookingPayment>
         <paymentCardDetail>
@@ -315,6 +316,7 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual
       "bookingPayment": {
         "modality": "Establishment",
         "type": "WarrantyCard",
+		"description": "Tarjeta de garantía",
         "status": "Pending"
       },
       "paymentCardDetail": {
@@ -408,6 +410,7 @@ booking[] | **Booking** | No | Información de una reserva de hotel
 ↳↳ modality| *Enum* | Sí | Modalidad de pago (Establishment / Inmediate / Deferred / CancelPenalty / Instalment / ExternManagement)
 ↳↳ type| *Enum* | Sí | Tipo de pago (BankTransfer / Card / VirtualCard / PrepaidCard / WarrantyCard / Cash / Cheque / Credit / Voucher / ExternalManaged / PinPad)
 ↳↳ status| *Enum* | Sí | Estado de pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳ description| *String* | No | Contiene el nombre comercial asignado a a la modalidad de pago
 ↳ paymentCardDetail| **PaymentCardDetail** | No | Detalles de la tarjeta que ha realizado el pago (sólo viene informado si bookingPayment.type es Card, PrepaidCard, VirtualCard o WarrantyCard)
 ↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
 ↳↳ number| *String* | Sí | Número de la tarjeta
