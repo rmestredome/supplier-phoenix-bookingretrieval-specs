@@ -892,8 +892,8 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual</p>
         <span class="nt">&lt;/remark&gt;</span>
         <span class="nt">&lt;bookingPayment&gt;</span>
             <span class="nt">&lt;modality&gt;</span>Establishment<span class="nt">&lt;/modality&gt;</span>
-            <span class="nt">&lt;type&gt;</span>WarrantyCard<span class="nt">&lt;/type&gt;</span>
-            <span class="nt">&lt;description&gt;</span>Tarjeta de garantía<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;type&gt;</span>PrepaidCard<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Tarjeta de prepago<span class="nt">&lt;/description&gt;</span>
             <span class="nt">&lt;status&gt;</span>Pending<span class="nt">&lt;/status&gt;</span>
         <span class="nt">&lt;/bookingPayment&gt;</span>
         <span class="nt">&lt;paymentCardDetail&gt;</span>
@@ -902,6 +902,35 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual</p>
             <span class="nt">&lt;expiryDate&gt;</span>01/01/2020<span class="nt">&lt;/expiryDate&gt;</span>
             <span class="nt">&lt;securityCode&gt;</span>123<span class="nt">&lt;/securityCode&gt;</span>
         <span class="nt">&lt;/paymentCardDetail&gt;</span>
+        <span class="nt">&lt;paymentDetail&gt;</span>
+            <span class="nt">&lt;action&gt;</span>Charge<span class="nt">&lt;/action&gt;</span>
+            <span class="nt">&lt;paymentStatus&gt;</span>Ok<span class="nt">&lt;/paymentStatus&gt;</span>
+            <span class="nt">&lt;type&gt;</span>ExternalManaged<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;date&gt;</span>24/01/2019 17:18<span class="nt">&lt;/date&gt;</span>
+            <span class="nt">&lt;amount&gt;</span>2635.663<span class="nt">&lt;/amount&gt;</span>
+            <span class="nt">&lt;externalManagedDetail&gt;</span>
+                <span class="nt">&lt;externalSystemCode&gt;</span>TARJETA VIRTUAL<span class="nt">&lt;/externalSystemCode&gt;</span>
+                <span class="nt">&lt;externalReference&gt;</span>5227<span class="nt">&lt;/externalReference&gt;</span>
+                <span class="nt">&lt;status&gt;</span>Ok<span class="nt">&lt;/status&gt;</span>
+            <span class="nt">&lt;/externalManagedDetail&gt;</span>
+        <span class="nt">&lt;/paymentDetail&gt;</span>
+        <span class="nt">&lt;paymentDetail&gt;</span>
+            <span class="nt">&lt;action&gt;</span>Charge<span class="nt">&lt;/action&gt;</span>
+            <span class="nt">&lt;paymentStatus&gt;</span>Pending<span class="nt">&lt;/paymentStatus&gt;</span>
+            <span class="nt">&lt;type&gt;</span>PrepaidCard<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;date&gt;</span>23/07/2019 09:42<span class="nt">&lt;/date&gt;</span>
+            <span class="nt">&lt;amount&gt;</span>2635.66<span class="nt">&lt;/amount&gt;</span>
+            <span class="nt">&lt;prepaidCardDetail&gt;</span>
+                <span class="nt">&lt;status&gt;</span>Pending<span class="nt">&lt;/status&gt;</span>
+                <span class="nt">&lt;card&gt;</span>
+                    <span class="nt">&lt;cardTypeCode&gt;</span>Visa<span class="nt">&lt;/cardTypeCode&gt;</span>
+                    <span class="nt">&lt;holder&gt;</span>Elena Ballester<span class="nt">&lt;/holder&gt;</span>
+                    <span class="nt">&lt;number&gt;</span>4111111111111111<span class="nt">&lt;/number&gt;</span>
+                    <span class="nt">&lt;expiryDate&gt;</span>01/01/2020<span class="nt">&lt;/expiryDate&gt;</span>
+                    <span class="nt">&lt;securityCode&gt;</span>123<span class="nt">&lt;/securityCode&gt;</span>
+                <span class="nt">&lt;/card&gt;</span>
+            <span class="nt">&lt;/prepaidCardDetail&gt;</span>
+        <span class="nt">&lt;/paymentDetail&gt;</span>
     <span class="nt">&lt;/booking&gt;</span>
 <span class="nt">&lt;/BookingRetrievalResponse&gt;</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1451,6 +1480,498 @@ o bien las reservas de un hotel creadas, canceladas o modificadas dentro de un r
 <td><em>String</em></td>
 <td>Sí</td>
 <td>Código de seguridad (cvc2)</td>
+</tr>
+<tr>
+<td>↳ paymentDetail[]</td>
+<td><strong>PaymentDetail</strong></td>
+<td>No</td>
+<td>Log con todos los pagos realizados en la reserva</td>
+</tr>
+<tr>
+<td>↳↳ action</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Tipo de operación (charge / refund)</td>
+</tr>
+<tr>
+<td>↳↳ paymentStatus</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳ type</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código del tipo de pago (Establishment / Inmediate / Deferred / CancelPenalty / Instalment / ExternManagement)</td>
+</tr>
+<tr>
+<td>↳↳ date</td>
+<td><em>Calendar</em></td>
+<td>Sí</td>
+<td>Fecha de la transacción</td>
+</tr>
+<tr>
+<td>↳↳ amount</td>
+<td><em>Double</em></td>
+<td>Sí</td>
+<td>Importe (#.##)</td>
+</tr>
+<tr>
+<td>↳↳↳ cardDetail</td>
+<td><em>PaymentDetailCardDetail</em></td>
+<td>No</td>
+<td>Detalle pago con tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳ status</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳↳↳ card</td>
+<td><em>CreditCard</em></td>
+<td>Sí</td>
+<td>Información de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeDescription</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre del tipo de tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ holder</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Nombre del titular de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ number</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ hashedValue</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ seriesCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>CVC</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ expiryDate</td>
+<td><em>Date</em></td>
+<td>Sí</td>
+<td>Fecha de caducidad (dd/MM/yyy)</td>
+</tr>
+<tr>
+<td>↳↳↳↳ systemCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Identificador del sistema de pago</td>
+</tr>
+<tr>
+<td>↳↳↳↳ reference</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Localizador de la reserva</td>
+</tr>
+<tr>
+<td>↳↳↳↳ authorizedCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código de autorización</td>
+</tr>
+<tr>
+<td>↳↳↳↳ errorDescription</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Descripción del error en el pago</td>
+</tr>
+<tr>
+<td>↳↳↳ externalManagedDetail</td>
+<td><em>PaymentExternalManagedDetail</em></td>
+<td>No</td>
+<td>Datos detallados de un sistema de pago externo, por ejemplo Paypal</td>
+</tr>
+<tr>
+<td>↳↳↳↳ externalSystemCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código del sistema externo</td>
+</tr>
+<tr>
+<td>↳↳↳↳ externalReference</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Referencia externa</td>
+</tr>
+<tr>
+<td>↳↳↳↳ status</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳↳ virtualCard</td>
+<td><em>VirtualCard</em></td>
+<td>No</td>
+<td>Información de la tarjeta virtual</td>
+</tr>
+<tr>
+<td>↳↳↳↳ code</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código de tarjeta virtual</td>
+</tr>
+<tr>
+<td>↳↳↳↳ accountCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código de la cuenta que gestiona las tarjetas virtuales</td>
+</tr>
+<tr>
+<td>↳↳↳↳ authorizedCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código de autorización del pago</td>
+</tr>
+<tr>
+<td>↳↳↳↳ currencyCode</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Código de divisa asociada al usuario</td>
+</tr>
+<tr>
+<td>↳↳↳↳ availableAmount</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Importe disponible en la cuenta que gestiona las tarjetas virtuales</td>
+</tr>
+<tr>
+<td>↳↳↳↳ status</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado de la tarjeta virtual (Active / Inactive / Blocked / Close)</td>
+</tr>
+<tr>
+<td>↳↳↳↳ referencePayClient</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>eferencia del pago para el cliente</td>
+</tr>
+<tr>
+<td>↳↳↳↳ description</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Descripción del elemento</td>
+</tr>
+<tr>
+<td>↳↳↳↳ person</td>
+<td><em>BasePerson</em></td>
+<td>No</td>
+<td>Persona con los datos básicos</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ firstName</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre de la persona</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ firstLastName</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Primer apellido de la persona</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ secondLastName</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Segundo apellido de la persona</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ birthDate</td>
+<td><em>Date</em></td>
+<td>No</td>
+<td>Fecha de nacimiento</td>
+</tr>
+<tr>
+<td>↳↳↳↳ contact</td>
+<td><em>BaseContact</em></td>
+<td>No</td>
+<td>Contacto con los datos básicos</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ phone</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de teléfono</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ fax</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de Fax</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ email</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Dirección de e-mail</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ web</td>
+<td><em>Date</em></td>
+<td>No</td>
+<td>Dirección de la página web</td>
+</tr>
+<tr>
+<td>↳↳↳↳ address</td>
+<td><em>Address</em></td>
+<td>No</td>
+<td>Información de Dirección</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ countryCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código del país</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ countryName</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre del país</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ state</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Estado</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ county</td>
+<td><em>Date</em></td>
+<td>No</td>
+<td>Condado</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ province</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Provincia</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ locationCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código de la localidad, ciudad, zona rural</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ locationName</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre de la localidad, ciudad, zona rural</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ postalCode</td>
+<td><em>Date</em></td>
+<td>No</td>
+<td>Código postal</td>
+</tr>
+<tr>
+<td>↳↳↳↳ creditCard</td>
+<td><em>CreditCard</em></td>
+<td>No</td>
+<td>Información de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeDescription</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre del tipo de tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ holder</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Nombre del titular de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ number</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ hashedValue</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ seriesCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>CVC</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ expiryDate</td>
+<td><em>Date</em></td>
+<td>Sí</td>
+<td>Fecha de caducidad (dd/MM/yyy)</td>
+</tr>
+<tr>
+<td>↳↳↳ prepaidCardDetail</td>
+<td><em>PrepaidCardDetail</em></td>
+<td>No</td>
+<td>Detalle pago con tarjeta de prepago</td>
+</tr>
+<tr>
+<td>↳↳↳↳ status</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳↳↳ systemCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Identificador del sistema de pago</td>
+</tr>
+<tr>
+<td>↳↳↳↳ card</td>
+<td><em>CreditCard</em></td>
+<td>Sí</td>
+<td>Datos de la tarjeta prepago</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeDescription</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre del tipo de tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ holder</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Nombre del titular de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ number</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ hashedValue</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ seriesCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>CVC</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ expiryDate</td>
+<td><em>Date</em></td>
+<td>Sí</td>
+<td>Fecha de caducidad (dd/MM/yyy)</td>
+</tr>
+<tr>
+<td>↳↳↳ warrantyCardDetail</td>
+<td><em>WarrantyCardDetail</em></td>
+<td>No</td>
+<td>Detalle pago con tarjeta de garantía</td>
+</tr>
+<tr>
+<td>↳↳↳↳ status</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)</td>
+</tr>
+<tr>
+<td>↳↳↳↳ systemCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Identificador del sistema de pago</td>
+</tr>
+<tr>
+<td>↳↳↳↳ card</td>
+<td><em>CreditCard</em></td>
+<td>Sí</td>
+<td>Datos de la tarjeta de garantía</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Código de la tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ cardTypeDescription</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Nombre del tipo de tarjeta de crédito</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ holder</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Nombre del titular de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ number</td>
+<td><em>String</em></td>
+<td>Sí</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ hashedValue</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>Número de la tarjeta</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ seriesCode</td>
+<td><em>String</em></td>
+<td>No</td>
+<td>CVC</td>
+</tr>
+<tr>
+<td>↳↳↳↳↳ expiryDate</td>
+<td><em>Date</em></td>
+<td>Sí</td>
+<td>Fecha de caducidad (dd/MM/yyy)</td>
 </tr>
 </tbody></table>
 
