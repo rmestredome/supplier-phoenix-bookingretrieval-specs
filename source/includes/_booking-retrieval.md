@@ -175,8 +175,8 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual
         </remark>
         <bookingPayment>
             <modality>Establishment</modality>
-            <type>WarrantyCard</type>
-			<description>Tarjeta de garantía</description>
+            <type>PrepaidCard</type>
+	    <description>Tarjeta de prepago</description>
             <status>Pending</status>
         </bookingPayment>
         <paymentCardDetail>
@@ -185,6 +185,35 @@ La reserva recuperada contiene dos habitaciones: 1 doble + 1 individual
             <expiryDate>01/01/2020</expiryDate>
             <securityCode>123</securityCode>
         </paymentCardDetail>
+		<paymentDetail>
+			<action>Charge</action>
+			<paymentStatus>Ok</paymentStatus>
+			<type>ExternalManaged</type>
+			<date>24/01/2019 17:18</date>
+			<amount>2635.663</amount>
+			<externalManagedDetail>
+				<externalSystemCode>TARJETA VIRTUAL</externalSystemCode>
+				<externalReference>5227</externalReference>
+				<status>Ok</status>
+			</externalManagedDetail>
+		</paymentDetail>
+		<paymentDetail>
+			<action>Charge</action>
+			<paymentStatus>Pending</paymentStatus>
+			<type>PrepaidCard</type>
+			<date>23/07/2019 09:42</date>
+			<amount>2635.66</amount>
+			<prepaidCardDetail>
+				<status>Pending</status>
+				<card>
+					<cardTypeCode>Visa</cardTypeCode>
+					<holder>Elena Ballester</holder>
+					<number>4111111111111111</number>
+					<expiryDate>01/01/2020</expiryDate>
+					<securityCode>123</securityCode>
+				</card>
+			</prepaidCardDetail>
+		</paymentDetail>
     </booking>
 </BookingRetrievalResponse>
 ````
@@ -416,6 +445,88 @@ booking[] | **Booking** | No | Información de una reserva de hotel
 ↳↳ number| *String* | Sí | Número de la tarjeta
 ↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
 ↳↳ securityCode| *String* | Sí | Código de seguridad (cvc2)
+↳ paymentDetail[]| **PaymentDetail** | No | Log con todos los pagos realizados en la reserva
+↳↳ action| *String* | Sí | Tipo de operación (charge / refund)
+↳↳ paymentStatus| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳ type| *String* | Sí | Código del tipo de pago (Establishment / Inmediate / Deferred / CancelPenalty / Instalment / ExternManagement)
+↳↳ date| *Calendar* | Sí | Fecha de la transacción
+↳↳ amount| *Double* | Sí | Importe (#.##)
+↳↳↳ cardDetail| *PaymentDetailCardDetail* | No | Detalle pago con tarjeta de crédito
+↳↳↳↳ status| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳↳↳ card| *CreditCard* | Sí | Información de la tarjeta de crédito
+↳↳↳↳↳ cardTypeCode| *String* | No | Código de la tarjeta de crédito
+↳↳↳↳↳ cardTypeDescription| *String* | No | Nombre del tipo de tarjeta de crédito
+↳↳↳↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
+↳↳↳↳↳ number| *String* | Sí | Número de la tarjeta
+↳↳↳↳↳ hashedValue| *String* | No | Número de la tarjeta
+↳↳↳↳↳ seriesCode| *String* | No | CVC
+↳↳↳↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
+↳↳↳↳ systemCode| *String* | Sí | Identificador del sistema de pago
+↳↳↳↳ reference| *String* | Sí | Localizador de la reserva
+↳↳↳↳ authorizedCode| *String* | Sí | Código de autorización
+↳↳↳↳ errorDescription| *String* | No | Descripción del error en el pago
+↳↳↳ externalManagedDetail| *PaymentExternalManagedDetail* | No | Datos detallados de un sistema de pago externo, por ejemplo Paypal
+↳↳↳↳ externalSystemCode| *String* | Sí | Código del sistema externo
+↳↳↳↳ externalReference| *String* | Sí | Referencia externa
+↳↳↳↳ status| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳↳ virtualCard| *VirtualCard* | No | Información de la tarjeta virtual
+↳↳↳↳ code| *String* | Sí | Código de tarjeta virtual
+↳↳↳↳ accountCode| *String* | Sí | Código de la cuenta que gestiona las tarjetas virtuales
+↳↳↳↳ authorizedCode| *String* | Sí | Código de autorización del pago
+↳↳↳↳ currencyCode| *String* | Sí | Código de divisa asociada al usuario
+↳↳↳↳ availableAmount| *String* | Sí | Importe disponible en la cuenta que gestiona las tarjetas virtuales
+↳↳↳↳ status| *String* | Sí | Estado de la tarjeta virtual (Active / Inactive / Blocked / Close)
+↳↳↳↳ referencePayClient| *String* | Sí | eferencia del pago para el cliente
+↳↳↳↳ description| *String* | No | Descripción del elemento
+↳↳↳↳ person| *BasePerson* | No | Persona con los datos básicos
+↳↳↳↳↳ firstName| *String* | No | Nombre de la persona
+↳↳↳↳↳ firstLastName| *String* | No | Primer apellido de la persona
+↳↳↳↳↳ secondLastName| *String* | No | Segundo apellido de la persona
+↳↳↳↳↳ birthDate| *Date* | No | Fecha de nacimiento
+↳↳↳↳ contact| *BaseContact* | No | Contacto con los datos básicos
+↳↳↳↳↳ phone| *String* | No | Número de teléfono
+↳↳↳↳↳ fax| *String* | No | Número de Fax
+↳↳↳↳↳ email| *String* | No | Dirección de e-mail
+↳↳↳↳↳ web| *Date* | No | Dirección de la página web
+↳↳↳↳ address| *Address* | No | Información de Dirección
+↳↳↳↳↳ countryCode| *String* | No | Código del país
+↳↳↳↳↳ countryName| *String* | No | Nombre del país
+↳↳↳↳↳ state| *String* | No | Estado
+↳↳↳↳↳ county| *Date* | No | Condado
+↳↳↳↳↳ province| *String* | No | Provincia
+↳↳↳↳↳ locationCode| *String* | No | Código de la localidad, ciudad, zona rural
+↳↳↳↳↳ locationName| *String* | No | Nombre de la localidad, ciudad, zona rural
+↳↳↳↳↳ postalCode| *Date* | No | Código postal
+↳↳↳↳ creditCard| *CreditCard* | No | Información de la tarjeta de crédito
+↳↳↳↳↳ cardTypeCode| *String* | No | Código de la tarjeta de crédito
+↳↳↳↳↳ cardTypeDescription| *String* | No | Nombre del tipo de tarjeta de crédito
+↳↳↳↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
+↳↳↳↳↳ number| *String* | Sí | Número de la tarjeta
+↳↳↳↳↳ hashedValue| *String* | No | Número de la tarjeta
+↳↳↳↳↳ seriesCode| *String* | No | CVC
+↳↳↳↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
+↳↳↳ prepaidCardDetail| *PrepaidCardDetail* | No | Detalle pago con tarjeta de prepago
+↳↳↳↳ status| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳↳↳ systemCode| *String* | No | Identificador del sistema de pago
+↳↳↳↳ card| *CreditCard* | Sí | Datos de la tarjeta prepago
+↳↳↳↳↳ cardTypeCode| *String* | No | Código de la tarjeta de crédito
+↳↳↳↳↳ cardTypeDescription| *String* | No | Nombre del tipo de tarjeta de crédito
+↳↳↳↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
+↳↳↳↳↳ number| *String* | Sí | Número de la tarjeta
+↳↳↳↳↳ hashedValue| *String* | No | Número de la tarjeta
+↳↳↳↳↳ seriesCode| *String* | No | CVC
+↳↳↳↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
+↳↳↳ warrantyCardDetail| *WarrantyCardDetail* | No | Detalle pago con tarjeta de garantía
+↳↳↳↳ status| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
+↳↳↳↳ systemCode| *String* | No | Identificador del sistema de pago
+↳↳↳↳ card| *CreditCard* | Sí | Datos de la tarjeta de garantía
+↳↳↳↳↳ cardTypeCode| *String* | No | Código de la tarjeta de crédito
+↳↳↳↳↳ cardTypeDescription| *String* | No | Nombre del tipo de tarjeta de crédito
+↳↳↳↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
+↳↳↳↳↳ number| *String* | Sí | Número de la tarjeta
+↳↳↳↳↳ hashedValue| *String* | No | Número de la tarjeta
+↳↳↳↳↳ seriesCode| *String* | No | CVC
+↳↳↳↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
 
 <aside class="notice">
 <sup>1</sup>&nbsp;&nbsp;&nbsp; Ejemplos: 
