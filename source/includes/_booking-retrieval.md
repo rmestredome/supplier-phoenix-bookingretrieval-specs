@@ -444,7 +444,7 @@ booking[] | **Booking** | No | Información de una reserva de hotel
 ↳↳ holder| *String* | Sí | Nombre del titular de la tarjeta
 ↳↳ number| *String* | Sí | Número de la tarjeta
 ↳↳ expiryDate| *Date* | Sí | Fecha de caducidad (dd/MM/yyy)
-↳↳ securityCode| *String* | Sí | Código de seguridad (cvc2)
+↳↳ securityCode| *String* | No | Código de seguridad (cvc2)
 ↳ paymentDetail[]| **PaymentDetail** | No | Log con todos los pagos realizados en la reserva
 ↳↳ action| *String* | Sí | Tipo de operación (charge / refund)
 ↳↳ paymentStatus| *String* | Sí | Estado del pago (Pending / Ok / Error / Cancelled / Inapplicable)
