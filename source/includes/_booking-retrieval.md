@@ -400,7 +400,7 @@ booking[] | **Booking** | No | Información de una reserva de hotel
 ↳ bookingClient| **BookingClient** | Sí | Información del cliente que ha realizado la reserva, refiriéndose a la agencia (Ej: Logitravel), OTA (Ej: Booking.com), o el propio hotel
 ↳↳ clientCode| *String* | Sí | Código de cliente
 ↳↳ clientName| *String* | Sí | Nombre de cliente
-↳↳ clientReference| *String* | Sí | Referencia de la reserva del cliente (habitualmente su localizador)
+↳↳ clientReference| *String* | No | Referencia de la reserva del cliente (habitualmente su localizador)
 ↳ endCustomer| **EndCustomer** | Sí | Información del cliente final de la reserva
 ↳↳ name| *String* | Sí | Nombre del cliente final
 ↳↳ birthDate| *Date* | No | Fecha de nacimiento (dd/MM/yyy)
