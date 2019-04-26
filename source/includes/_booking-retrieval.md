@@ -393,6 +393,7 @@ sessionId | *String* | Sí|Identificador de la sesión que ha procesado la trans
 booking[] | **Booking** | No | Información de una reserva de hotel
 ↳ reference| *String* | Sí | Localizador de la reserva
 ↳ creationDate| *DateTime* | Sí | Fecha de creación de la reserva (dd/MM/yyy HH:mm)
+↳ modificationDate| *DateTime* | No | Fecha de creación de la reserva (dd/MM/yyyy HH:mm). Sólo viene informado cuando es una modificación de reserva
 ↳ checkIn| *Date* | Sí | Fecha de entrada (dd/MM/yyy)
 ↳ checkOut| *Date* | Sí | Fecha de salida (dd/MM/yyy)
 ↳ status| *Enum* | Sí | Estado de la reserva (Confirmed, Cancelled, OnRequest)
