@@ -62,8 +62,14 @@ WebsiteUrl | *String* | Indica la url de la web donde se ha realizado la reserva
 IpAdress | *String* | Indica la ip desde la cual se ha realizado la reserva.
 Country | *String* | Indica el pais desde el cual se ha realizado la reserva. (ISO 3166)
 ReferredByUrl | *String* | Indica la Url desde la cual ha llegado la reserva.
-ReferredBySystem | *String* | Indica el sistema desde el cual ha llegado la reserva. (GHF -Google Hotel Finder-, TVG -Trivago-).
+ReferredBySystem | *String* | Indica el sistema desde el cual ha llegado la reserva. (HPH -Web-, MPH -Móvil-, GHF -Google Hotel Finder-, TVG -Trivago-,...).
 Affiliate | *String* | 
 Medium | *String* |
 Source | *String* |
+PriceType | *String* | Indica el tipo de precio enviado en la reserva (*Net*: Precio Neto / *PVP* : Precio Comisionable).
+ClientType | *String* | Indica el tipo<sup>1</sup> de cliente que ha realizado la reserva.
+StatusPaymentBooking | *String* | Indica si la reserva ha sido pagada o no. Valores: *Charged* / *Pending*
 
+<aside class="notice">
+<sup>2</sup>&nbsp;&nbsp;&nbsp;Los tipos de cliente actuales son: *M* (Mayorista) / *A* (Alojamiento) / *C* (Channel Manager) / *O* (Operador) / *G* (Agencia de viajes)
+</aside>
