@@ -39,3 +39,4 @@ Pasos a seguir:
 2. Ejecutar `./deploy.sh` (si se ejecuta en linux puede ser necesario convertir el fichero a EOL-LF: se puede hacer con el Notepad++ por ejemplo -> Edit/EOL Conversion/Unix )
 
 Los cambios deberían haberse publicado en http://githubusername.github.io/githubprojectname. Ej: http://dome-consulting.github.io/supplier-phoenix-bookingretrieval-specs
+
